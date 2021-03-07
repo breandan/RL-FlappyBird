@@ -2,6 +2,7 @@ package com.kingyu.rlbird.ai;
 
 import ai.djl.MalformedModelException;
 import ai.djl.Model;
+import ai.djl.engine.Engine;
 import ai.djl.ndarray.NDManager;
 import ai.djl.ndarray.types.Shape;
 import ai.djl.nn.Activation;
@@ -56,13 +57,15 @@ public final class TrainBird {
     private TrainBird() {}
 
     public static void main(String[] args) throws ParseException, IOException, MalformedModelException {
+        Engine.getInstance().debugEnvironment();
         Arguments arguments = Arguments.parseArgs(args);
         Model model = createOrLoadModel(arguments);
-        if (arguments.isTesting()) {
-            test(model);
-        } else {
-            train(arguments, model);
-        }
+        System.out.println(model.getNDManager().getDevice().toString());
+//        if (arguments.isTesting()) {
+//            test(model);
+//        } else {
+//            train(arguments, model);
+//        }
     }
 
     public static Model createOrLoadModel(Arguments arguments) throws IOException, MalformedModelException {
