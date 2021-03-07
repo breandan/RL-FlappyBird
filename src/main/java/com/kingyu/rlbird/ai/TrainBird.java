@@ -57,15 +57,13 @@ public final class TrainBird {
     private TrainBird() {}
 
     public static void main(String[] args) throws ParseException, IOException, MalformedModelException {
-        Engine.getInstance().debugEnvironment();
         Arguments arguments = Arguments.parseArgs(args);
         Model model = createOrLoadModel(arguments);
-        System.out.println(model.getNDManager().getDevice().toString());
-//        if (arguments.isTesting()) {
-//            test(model);
-//        } else {
-//            train(arguments, model);
-//        }
+        if (arguments.isTesting()) {
+            test(model);
+        } else {
+            train(arguments, model);
+        }
     }
 
     public static Model createOrLoadModel(Arguments arguments) throws IOException, MalformedModelException {
