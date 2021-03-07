@@ -91,7 +91,7 @@ public final class TrainBird {
 
                 RlAgent agent = new QAgent(trainer, REWARD_DISCOUNT);
                 Tracker exploreRate =
-                        new LinearTracker.Builder()
+                        LinearTracker.builder()
                                 .setBaseValue(INITIAL_EPSILON)
                                 .optSlope(-(INITIAL_EPSILON - FINAL_EPSILON) / EXPLORE)
                                 .optMinValue(FINAL_EPSILON)
